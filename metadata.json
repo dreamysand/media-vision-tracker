@@ -1,0 +1,8 @@
+
+{
+  "name": "Vision Media Tracker",
+  "description": "A premium personal watchlist application to track movies, series, and anime with a focus on privacy, offline storage, and a beautiful, modern interface.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

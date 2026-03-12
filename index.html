@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#112117" />
+    <link rel="manifest" href="manifest.json" />
+    <title>Vision - Personal Watchlist</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#36e270",
+              "background-light": "#f6f8f6",
+              "background-dark": "#112117",
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.25rem",
+              "lg": "0.5rem",
+              "xl": "0.75rem",
+              "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      .poster-card:active { transform: scale(0.98); transition: transform 0.1s ease; }
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        min-height: 100dvh;
+        overscroll-behavior-y: contain;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .filled-icon {
+        font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "dexie": "https://esm.sh/dexie@^4.0.1",
+    "dexie-react-hooks": "https://esm.sh/dexie-react-hooks@^1.1.7",
+    "@google/genai": "https://esm.sh/@google/genai@^1.41.0"
+  }
+}
+</script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-background-light dark:bg-background-dark text-[#1a2e21] dark:text-[#e8f5ec]">
+    <div id="root"></div>
+    <script>
+      // Simplified Service Worker registration to prevent construction errors
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          // Using a simple relative path is most reliable across different environments
+          navigator.serviceWorker.register('./sw.js')
+            .then((registration) => {
+              console.log('Vision ServiceWorker registered with scope:', registration.scope);
+            })
+            .catch((error) => {
+              // Gracefully catch security/origin errors common in preview sandboxes
+              console.warn('Service Worker registration skipped:', error.message);
+            });
+        });
+      }
+    </script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

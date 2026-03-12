@@ -1,9 +1,9 @@
-
 {
   "name": "Vision Media Tracker",
   "short_name": "Vision",
   "description": "Premium personal watchlist tracker.",
-  "start_url": "./index.html",
+  "start_url": "/", 
+  "scope": "/",
   "display": "standalone",
   "background_color": "#112117",
   "theme_color": "#36e270",
